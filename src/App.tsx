@@ -2,8 +2,10 @@ import * as React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import netlifyIdentity from "netlify-identity-widget";
 
+// Page Imports
+import Home from "./pages/Home/Home";
+
 netlifyIdentity.init({
-  container: '#netlify-modal', // defaults to document.body
   locale: 'en' // defaults to 'en'
 });
 
@@ -24,7 +26,7 @@ export default class App extends React.Component<Props, State> {
             <BrowserRouter>
                 <Switch>
                     {/* Paths */}
-                    <Route path="/"     component={ () => { return <h1>Hello, World!</h1>; } } exact/>
+                    <Route path="/"     component={ Home } exact/>
                 </Switch>
             </BrowserRouter>
         )
