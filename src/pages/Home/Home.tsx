@@ -16,8 +16,11 @@ export default class Home extends React.Component<Props, State> {
     render() {
         return (
             <Template currentPage={Page.HOME}>
-                <div className={cx( Styles.welcomeWidget, "text-center" )}   >
-                    <h1>👋 Hi! Welcome to Colandria...</h1>
+                <div className={cx( Styles.welcomeWidget, "text-center" )}>
+                    <div style={{ margin: 50 }}>
+                        <h1><span className={cx( Styles.handWave )}>👋</span> Hi! Welcome to Colandria...</h1>
+                        <p>A reading directory for bookworms.</p>
+                    </div>
                     <Button className={cx( GlobalStyles.coloredButton )} style={{ marginBottom: 10 }}>
                         Create an Account
                     </Button>

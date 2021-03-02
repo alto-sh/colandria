@@ -24,21 +24,21 @@ const Styles = {
         border-radius: 1rem;
         width: 100%;
         padding: 17px;
-        font-size: 24pt;
-        font-family: 'Josefin Sans', sans-serif;
+        font-size: 20pt;
+        font-family: 'Poppins', sans-serif;
         transition: all .25s;
 
         /* Colors */
         &, &:hover, &:active {
-            background: #FE4A49 !important;
-            border-color: #FE4A49 !important;
+            background: var(--indigo) !important;
+            border-color: var(--indigo) !important;
             box-shadow: none !important;
             outline: none !important;
         }
 
         &:hover {
-            opacity: 0.8;
-            transform: scale(1.04);
+            opacity: 0.9;
+            transform: scale(1.02);
         }
     `,
     lightButton: css`
@@ -46,8 +46,8 @@ const Styles = {
         border-radius: 1rem;
         width: 100%;
         padding: 17px;
-        font-size: 24pt;
-        font-family: 'Josefin Sans', sans-serif;
+        font-size: 20pt;
+        font-family: 'Poppins', sans-serif;
         transition: all .25s;
 
         /* Colors */
@@ -61,8 +61,9 @@ const Styles = {
         }
 
         &:hover {
-            opacity: 0.8;
-            transform: scale(1.04);
+            opacity: 0.9;
+            transform: scale(1.02);
+            color: #333 !important;
         }
     `
 }

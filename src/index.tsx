@@ -7,7 +7,7 @@ import App from "./app";
 
 WebFont.load({
     google: {
-        families: ["Josefin Sans", "Titilium Web"]
+        families: ["Josefin Sans", "Poppins"]
     }
 })
 

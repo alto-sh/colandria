@@ -5,15 +5,7 @@ const Styles = {
     pageStyles: css`
         min-height: 100vh;
         background: #FBFAF5;
-
-        & h1, h2, h3, h5, h6 {
-            font-family: 'Josefin Sans', serif;
-            padding: 20px;
-        }
-
-        & p {
-            font-family: 'Titilium Web', sans-serif;
-        }
+        font-family: 'Poppins', sans-serif;
     `,
     innerFrame: css`
         width: 100%;
@@ -23,18 +15,31 @@ const Styles = {
         margin-right: auto
     `,
     headerStyles: css`
+        margin: 20px;
+
         &, & h1 {
            transition: all 0.5s;
            display: inline-block;
-           color: #333;
            font-size: 50pt;
            font-weight: bold;
+           font-family: 'Josefin Sans', serif;
+        }
+
+        & h1 {
+            animation: bgColor 10s infinite linear;
+
+            @keyframes bgColor {
+                16.6% { color: #0000FF; }
+                50% { color: #9932CC; }
+                88.6% { color: #FF1493; }
+                100% { color: #0000FF; }
+            }
         }
         
         &:hover {
             cursor: pointer;
 
-            & h1 { font-size: 54pt !important; color: #666; }
+            & h1 { font-size: 54pt !important; }
         }
     `,
     bodyStyles: css`

@@ -26,7 +26,7 @@ const Styles = {
     `,
     activeNavBtnStyles: css`
         background: whitesmoke;
-        font-weight: bold;
+        & h4 { font-weight: bold !important; }
         cursor: pointer;
     `
 }

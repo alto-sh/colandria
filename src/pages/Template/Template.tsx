@@ -20,11 +20,11 @@ export default class Template extends React.Component<Props, State> {
                 <div className={cx( Styles.innerFrame )}>
                     <br/><br/>
                     <Link to="/" className={cx( Styles.headerStyles )}>
-                        <h1>Colandria</h1>
+                        <h1 className=".josefin">Colandria</h1>
                     </Link>
                     <br/>
                     <NavPanel currentPage={this.props.currentPage}/>
-                    <br/>
+                    <br/><br/>
                     <div className={cx( Styles.bodyStyles )}>
                         {this.props.children}
                     </div>
