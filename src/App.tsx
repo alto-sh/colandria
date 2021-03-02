@@ -1,7 +1,14 @@
 import * as React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import netlifyIdentity from "netlify-identity-widget";
 
-import Styles from "./AppStyles";
+netlifyIdentity.init({
+  container: '#netlify-modal', // defaults to document.body
+  locale: 'en' // defaults to 'en'
+});
+
+netlifyIdentity.on('init', user => console.log('init', user));
+netlifyIdentity.on('login', user => console.log('login', user));
 
 type State = {};
 type Props = {};
