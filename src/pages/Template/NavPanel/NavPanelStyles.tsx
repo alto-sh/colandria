@@ -26,6 +26,7 @@ const Styles = {
     `,
     activeNavBtnStyles: css`
         background: whitesmoke;
+        font-weight: bold;
         cursor: pointer;
     `
 }

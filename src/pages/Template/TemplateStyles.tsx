@@ -36,6 +36,9 @@ const Styles = {
 
             & h1 { font-size: 54pt !important; color: #666; }
         }
+    `,
+    bodyStyles: css`
+        padding: 30px;
     `
 }
 

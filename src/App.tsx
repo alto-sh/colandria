@@ -4,6 +4,8 @@ import netlifyIdentity from "netlify-identity-widget";
 
 // Page Imports
 import Home from "./pages/Home/Home";
+import Journal from "./pages/Journal/Journal";
+import MindPalace from "./pages/MindPalace/MindPalace";
 
 netlifyIdentity.init({
   locale: 'en' // defaults to 'en'
@@ -26,7 +28,9 @@ export default class App extends React.Component<Props, State> {
             <BrowserRouter>
                 <Switch>
                     {/* Paths */}
-                    <Route path="/"     component={ Home } exact/>
+                    <Route path="/"             component={ Home }          exact/>
+                    <Route path="/journal"      component={ Journal }       exact/>
+                    <Route path="/palace"       component={ MindPalace }    exact/>
                 </Switch>
             </BrowserRouter>
         )

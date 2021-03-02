@@ -24,6 +24,10 @@ export default class Template extends React.Component<Props, State> {
                     </Link>
                     <br/>
                     <NavPanel currentPage={this.props.currentPage}/>
+                    <br/>
+                    <div className={cx( Styles.bodyStyles )}>
+                        {this.props.children}
+                    </div>
                 </div>
             </div>
         )
