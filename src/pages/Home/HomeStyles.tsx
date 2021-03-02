@@ -2,12 +2,13 @@ import { css } from "emotion";
 
 const Styles = {
     welcomeWidget: css`
-        transition: all .5s;
         border-radius: 1.25rem;
-        background: whitesmoke;
         padding: 30px;
 
-        &, & h1 { font-weight: bold; }
+        &, & h1 { 
+            font-weight: bold; 
+            transition: all .25s;
+        }
         
         & h1 { 
             margin: 30px; 
@@ -22,6 +23,15 @@ const Styles = {
             font-weight: normal;
             font-family: 'Poppins', sans-serif !important;
         }
+    `,
+    welcomeWidgetDark: css`
+        background: rgba(255, 255, 255, 0.1);
+        & h1 {
+            color: white;
+        }
+    `,
+    welcomeWidgetLight: css`
+        background: whitesmoke;
     `,
     handWave: css`
         animation-name: wave-animation; 

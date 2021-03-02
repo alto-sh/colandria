@@ -1,11 +1,16 @@
 import { css } from "emotion";
-import tw from "twin.macro";
 
 const Styles = {
     pageStyles: css`
         min-height: 100vh;
-        background: #FBFAF5;
         font-family: 'Poppins', sans-serif;
+        transition: all .25s;
+    `,
+    darkTheme: css`
+        background: #121212;
+    `,
+    lightTheme: css`
+        background: #FBFAF5;
     `,
     innerFrame: css`
         width: 100%;

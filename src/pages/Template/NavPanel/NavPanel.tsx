@@ -6,7 +6,8 @@ import NavBtn from "./NavBtn";
 import Page from "../../../types/Page";
 
 type Props = {
-    currentPage: Page
+    currentPage: Page,
+    dark?: boolean
 };
 type State = {};
 
@@ -16,9 +17,9 @@ export default class NavPanel extends React.Component<Props, State> {
         return (
             <>
                 &nbsp;&nbsp;&nbsp;
-                <NavBtn to="/" page={Page.HOME} currentPage={this.props.currentPage}>Home</NavBtn>
-                <NavBtn to="/journal" page={Page.JOURNAL} currentPage={this.props.currentPage}>Journal</NavBtn>
-                <NavBtn to="/palace" page={Page.FOCUSED_READING} currentPage={this.props.currentPage}>Mind Palace</NavBtn>
+                <NavBtn to="/" page={Page.HOME} currentPage={this.props.currentPage} dark={this.props.dark}>Home</NavBtn>
+                <NavBtn to="/journal" page={Page.JOURNAL} currentPage={this.props.currentPage} dark={this.props.dark}>Journal</NavBtn>
+                <NavBtn to="/palace" page={Page.FOCUSED_READING} currentPage={this.props.currentPage} dark={this.props.dark}>Mind Palace</NavBtn>
             </>
         )
     }
