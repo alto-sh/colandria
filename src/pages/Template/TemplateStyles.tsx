@@ -16,7 +16,7 @@ const Styles = {
         }
     `,
     innerFrame: css`
-        width: 980px;
+        width: 100%;
         max-width: 980px;
         display: table;
         margin-left: auto;

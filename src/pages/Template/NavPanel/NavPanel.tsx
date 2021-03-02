@@ -3,7 +3,7 @@ import React from "react";
 import { cx } from "emotion";
 import Styles from "./NavPanelStyles";
 import NavBtn from "./NavBtn";
-import Page from "../../../../types/Page";
+import Page from "../../../types/Page";
 
 type Props = {
     currentPage: Page

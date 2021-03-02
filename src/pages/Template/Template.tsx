@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import { cx } from "emotion";
 import Styles from "./TemplateStyles";
-import GlobalStyles from "../../../GlobalStyles";
+import GlobalStyles from "../../GlobalStyles";
 import NavPanel from "./NavPanel/NavPanel";
-import Page from "../../../types/Page";
+import Page from "../../types/Page";
 
 type Props = {
     currentPage: Page

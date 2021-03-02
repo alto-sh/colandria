@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { cx } from "emotion";
 import Styles from "./NavPanelStyles";
-import Page from "../../../../types/Page";
+import Page from "../../../types/Page";
 
 type Props = {
     to: string,
