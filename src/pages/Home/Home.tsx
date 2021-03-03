@@ -68,8 +68,8 @@ export default class Home extends React.Component<Props, State> {
         outerThis.setState({ userIsAuthenticated: false });
     }
 
-    openNetlifyIdentity() {
-        netlifyIdentity.open();
+    openNetlifyIdentity(tab: 'login'|'signup') {
+        netlifyIdentity.open(tab);
     }
 
     logout() {
@@ -85,7 +85,7 @@ export default class Home extends React.Component<Props, State> {
         return (
             <Template currentPage={Page.HOME} dark={this.state.dark} toggleDarkMode={this.toggleDarkMode}>
                 {
-                    !this.state.userIsAuthenticated ? (
+                    !this.state.userIsAuthenticated || !this.state.user ? (
                         /* If the user is not authenticated */
                         <WelcomeWidget dark={this.state.dark} openNetlifyIdentity={this.openNetlifyIdentity}/>
                     ) : (

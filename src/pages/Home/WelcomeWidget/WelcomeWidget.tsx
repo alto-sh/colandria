@@ -21,10 +21,10 @@ export default class WelcomeWidget extends React.Component<Props, State> {
                     <h1><span className={cx( Styles.handWave )}>👋</span> Hi! Welcome to Colandria...</h1>
                     <p>A reading directory for bookworms.</p>
                 </div>
-                <Button className={cx( GlobalStyles.coloredButton )} style={{ marginBottom: 10 }} onClick={() => { this.props.openNetlifyIdentity() }}>
+                <Button className={cx( GlobalStyles.coloredButton )} style={{ marginBottom: 10 }} onClick={() => { this.props.openNetlifyIdentity('signup') }}>
                     Create an Account
                 </Button>
-                <Button className={cx( GlobalStyles.lightButton )} onClick={() => { this.props.openNetlifyIdentity() }}>
+                <Button className={cx( GlobalStyles.lightButton )} onClick={() => { this.props.openNetlifyIdentity('login') }}>
                     I have an Account
                 </Button>
             </div>
