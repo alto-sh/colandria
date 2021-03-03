@@ -10,7 +10,8 @@ import $ from "jquery";
 
 type Props = {};
 type State = {
-    dark: boolean
+    dark: boolean,
+    sessionInProgress: boolean
 };
 
 export default class MindPalace extends React.Component<Props, State> {
@@ -18,12 +19,19 @@ export default class MindPalace extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
+        let dark: boolean = false;
+        const darkModeStr: string = window.localStorage.getItem("darkMode");
+        if (darkModeStr === "true") dark = true;
+        if (darkModeStr === "false") dark = false;
+        
         this.state = {
-            dark: false
+            dark: dark,
+            sessionInProgress: false
         }
 
         // Method Binding
         this.initializeSession = this.initializeSession.bind(this);
+        this.toggleDarkMode = this.toggleDarkMode.bind(this);
     }
 
     componentDidMount() {
@@ -31,7 +39,7 @@ export default class MindPalace extends React.Component<Props, State> {
     }
 
     initializeSession() {
-        this.setState({ dark: true }, () => {
+        this.setState({ dark: true, sessionInProgress: true }, () => {
             $("#init-settings").fadeOut();
             $("#palace").fadeIn();
         });
@@ -39,10 +47,15 @@ export default class MindPalace extends React.Component<Props, State> {
 
     /* Implement endSession method */
 
+    toggleDarkMode() {
+        window.localStorage.setItem("darkMode", (!this.state.dark ? "true" : "false"));
+        this.setState({ dark: !this.state.dark });
+    }
+
     render() {
         return (
-            <Template currentPage={Page.FOCUSED_READING} dark={this.state.dark}>
-                <PalaceInitializer dark={this.state.dark} initializeSession={this.initializeSession}/>
+            <Template currentPage={Page.FOCUSED_READING} dark={this.state.sessionInProgress || this.state.dark} toggleDarkMode={this.toggleDarkMode}>
+                <PalaceInitializer dark={this.state.sessionInProgress || this.state.dark} initializeSession={this.initializeSession}/>
             </Template>
         )
     }

@@ -9,7 +9,8 @@ import Page from "../../types/Page";
 
 type Props = {
     currentPage: Page,
-    dark?: boolean
+    dark?: boolean,
+    toggleDarkMode?: Function
 };
 type State = {};
 
@@ -24,9 +25,9 @@ export default class Template extends React.Component<Props, State> {
             <div className={cx( GlobalStyles.FLAT_LINK, Styles.pageStyles, (this.props.dark ? Styles.darkTheme : Styles.lightTheme) )}>
                 <div className={cx( Styles.innerFrame )}>
                     <br/><br/>
-                    <Link to="/" className={cx( Styles.headerStyles )}>
+                    <span className={cx( Styles.headerStyles )} onClick={(this.props.toggleDarkMode ? () => { this.props.toggleDarkMode() }: null)}>
                         <h1 className=".josefin">Colandria</h1>
-                    </Link>
+                    </span>
                     <br/>
                     <NavPanel currentPage={this.props.currentPage} dark={this.props.dark}/>
                     <br/><br/>

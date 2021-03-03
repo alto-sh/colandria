@@ -26,8 +26,13 @@ export default class Home extends React.Component<Props, State> {
 
         const { userIsAuthenticated, user } = this.initializeAuth();
 
+        let dark: boolean = false;
+        const darkModeStr: string = window.localStorage.getItem("darkMode");
+        if (darkModeStr === "true") dark = true;
+        if (darkModeStr === "false") dark = false;
+
         this.state = {
-            dark: true,
+            dark: dark,
             userIsAuthenticated: userIsAuthenticated,
             user: user
         }
@@ -35,6 +40,7 @@ export default class Home extends React.Component<Props, State> {
         // Method Bindings
         this.setUserIsAuthenticated = this.setUserIsAuthenticated.bind(this);
         this.setUserIsNotAuthenticated = this.setUserIsNotAuthenticated.bind(this);
+        this.toggleDarkMode = this.toggleDarkMode.bind(this);
     }
 
     initializeAuth(): { userIsAuthenticated: boolean, user: netlifyIdentity.User } {
@@ -70,9 +76,14 @@ export default class Home extends React.Component<Props, State> {
         netlifyIdentity.logout();
     }
 
+    toggleDarkMode() {
+        window.localStorage.setItem("darkMode", (!this.state.dark ? "true" : "false"));
+        this.setState({ dark: !this.state.dark });
+    }
+
     render() {
         return (
-            <Template currentPage={Page.HOME} dark={this.state.dark}>
+            <Template currentPage={Page.HOME} dark={this.state.dark} toggleDarkMode={this.toggleDarkMode}>
                 {
                     !this.state.userIsAuthenticated ? (
                         /* If the user is not authenticated */
