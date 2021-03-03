@@ -1,18 +1,10 @@
 import * as React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import netlifyIdentity from "netlify-identity-widget";
 
 // Page Imports
 import Home from "./pages/Home/Home";
 import Journal from "./pages/Journal/Journal";
 import MindPalace from "./pages/MindPalace/MindPalace";
-
-netlifyIdentity.init({
-  locale: 'en' // defaults to 'en'
-});
-
-netlifyIdentity.on('init', user => console.log('init', user));
-netlifyIdentity.on('login', user => console.log('login', user));
 
 type State = {};
 type Props = {};
