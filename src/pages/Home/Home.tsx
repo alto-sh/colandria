@@ -7,16 +7,20 @@ import Template from "../Template/Template";
 import netlifyIdentity from "netlify-identity-widget";
 
 import Page from "../../types/Page";
-import Button from "react-bootstrap/Button";
-import $ from "jquery";
 import WelcomeWidget from "./WelcomeWidget/WelcomeWidget";
 import UserPanel from "./UserPanel/UserPanel";
+import Book from "../../widgets/Book/Book";
+import BookType from "../../types/Book";
+import Config from "../../helpers/httpconfig";
+
+import $ from "jquery";
 
 type Props = {};
 type State = {
     dark: boolean,
     userIsAuthenticated: boolean,
-    user: netlifyIdentity.User | null
+    user: netlifyIdentity.User | null,
+    books: BookType[]
 };
 
 export default class Home extends React.Component<Props, State> {
@@ -34,8 +38,11 @@ export default class Home extends React.Component<Props, State> {
         this.state = {
             dark: dark,
             userIsAuthenticated: userIsAuthenticated,
-            user: user
+            user: user,
+            books: []
         }
+
+        this.loadData();
 
         // Method Bindings
         this.setUserIsAuthenticated = this.setUserIsAuthenticated.bind(this);
@@ -58,6 +65,27 @@ export default class Home extends React.Component<Props, State> {
             userIsAuthenticated: !!user,
             user: user
         };
+    }
+
+    componentDidMount() {
+        $(window).on("scroll", () => {
+            var scrollHeight = $(document).height();
+            var scrollPos = $(window).height() + $(window).scrollTop();
+            // @ts-ignore
+            if ((scrollHeight as number - Math.floor(scrollPos)) / scrollHeight as number == 0) {
+                this.loadData();
+            }
+        });
+    }
+
+    async loadData() {
+        const books = (await this.getBooks(10)).results;
+        this.setState({ books: this.state.books.concat(books) });
+    }
+
+    async getBooks(limit: number): Promise<{ success: boolean, results: BookType[] }> {
+        return await fetch(`${Config.backend_base_url}/book/get/${limit}`)
+                    .then(res => res.json());
     }
 
     setUserIsAuthenticated(outerThis: React.Component) {
@@ -92,6 +120,16 @@ export default class Home extends React.Component<Props, State> {
                         /* If the user is authenticated */
                         <UserPanel dark={this.state.dark} user={this.state.user} logout={this.logout}/>
                     )
+                }
+                <br/>
+                {
+                    this.state.books.map(book => (
+                        <Book 
+                            book={book} 
+                            dark={this.state.dark}
+                            userIsAuthenticated={this.state.userIsAuthenticated}
+                        />
+                    ))
                 }
             </Template>
         )

@@ -23,6 +23,7 @@
     "fs": "0.0.1-security",
     "jquery": "^3.5.1",
     "netlify-identity-widget": "^1.9.1",
+    "react-feather": "^2.0.9",
     "source-map-loader": "^1.0.0",
     "twin.macro": "^2.2.3"
   },

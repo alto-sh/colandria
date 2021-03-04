@@ -90,6 +90,56 @@ const Styles = {
             transform: scale(1.02);
             color: white !important;
         }
+    `,
+    amazonButton: css`
+        text-align: center;
+        border-radius: 1rem;
+        width: 100%;
+        padding: 17px;
+        font-size: 20pt;
+        font-family: 'Poppins', sans-serif;
+        transition: all .25s;
+
+        /* Colors */
+        &, &:hover, &:active {
+            background: #FF9900 !important;
+            border-color: #FF9900 !important;
+            color: #333;
+            border-width: 4px;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+            color: black !important;
+        }
+    `,
+    goodreadsButton: css`
+        text-align: center;
+        border-radius: 1rem;
+        width: 100%;
+        padding: 17px;
+        font-size: 20pt;
+        font-family: 'Poppins', sans-serif;
+        transition: all .25s;
+
+        /* Colors */
+        &, &:hover, &:active {
+            background: #e9e5cd !important;
+            border-color: #e9e5cd !important;
+            color: #333;
+            border-width: 4px;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+            color: black !important;
+        }
     `
 }
 
