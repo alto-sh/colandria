@@ -11,28 +11,30 @@ import Music from "../../../types/Music";
 
 type Props = {
     dark?: boolean,
-    initializeSession: Function
+    initializeSession: Function,
+    endSession: Function,
+    updateCategory: Function,
+    music: Music
 };
 type State = {
-    time: number,
-    music: Music
+    time: number
 };
 
 export default class PalaceInitializer extends React.Component<Props, State> {
 
     timerTask: NodeJS.Timeout = null;
+    defaultTime: number = 1500;
 
     constructor(props: Props) {
         super(props);
 
         this.state = {
-            time: 1500,
-            music: Music.NONE
+            time: this.defaultTime
         }
 
         // Method Binding
-        this.updateCategory = this.updateCategory.bind(this);
         this.decrementTimer = this.decrementTimer.bind(this);
+        this.stopTimer = this.stopTimer.bind(this);
     }
 
     formatTime(time: number) {
@@ -48,25 +50,26 @@ export default class PalaceInitializer extends React.Component<Props, State> {
         return (num < 10 ? `0${num}` : `${num}`);
     }
 
-    updateCategory(music: Music) {
-        this.setState({ music: music });
-    }
-
     getMusicDesc(): string {
-        if ( this.state.music == Music.NONE ) return "";
-        return `Playing ${this.state.music === Music.LOFI ? "Lofi" : "Atmospheric" } Music...`;
+        if ( this.props.music == Music.NONE ) return "";
+        return `Playing ${this.props.music === Music.LOFI ? "Lofi" : "Atmospheric" } Music...`;
     }
 
     startTimer() {
         this.timerTask = setInterval(this.decrementTimer, 1000);
     }
 
+    stopTimer() {
+        clearInterval(this.timerTask);
+        this.setState({ time: this.defaultTime });
+    }
+
     decrementTimer() {
         let time: number = this.state.time;
         
         if (time === 0) {
-            clearInterval(this.timerTask);
-            // Call this.props.endSession
+            this.stopTimer();
+            this.props.endSession();
             return;
         }
 
@@ -91,13 +94,13 @@ export default class PalaceInitializer extends React.Component<Props, State> {
                         <br/>
                         <h1>Music?</h1>
                         <p>Some stuff about music...</p>
-                        <MusicCategoryButton category={Music.LOFI} dark={this.props.dark} updateCategory={this.updateCategory} currentMusic={this.state.music}>
+                        <MusicCategoryButton category={Music.LOFI} dark={this.props.dark} updateCategory={this.props.updateCategory} currentMusic={this.props.music}>
                             Lofi
                         </MusicCategoryButton>
-                        <MusicCategoryButton category={Music.ATMOSPHERIC} dark={this.props.dark} updateCategory={this.updateCategory} currentMusic={this.state.music}>
+                        <MusicCategoryButton category={Music.ATMOSPHERIC} dark={this.props.dark} updateCategory={this.props.updateCategory} currentMusic={this.props.music}>
                             Atmospheric
                         </MusicCategoryButton>
-                        <MusicCategoryButton category={Music.NONE} dark={this.props.dark} updateCategory={this.updateCategory} currentMusic={this.state.music}>
+                        <MusicCategoryButton category={Music.NONE} dark={this.props.dark} updateCategory={this.props.updateCategory} currentMusic={this.props.music}>
                             No Music
                         </MusicCategoryButton>
                     </div>
@@ -112,6 +115,12 @@ export default class PalaceInitializer extends React.Component<Props, State> {
                             { this.formatTime(this.state.time) }
                         </div>
                         <h4 style={{ color: "#666" }}>{this.getMusicDesc()}</h4>
+                    </div>
+                    <br/>
+                    <div className={cx( Styles.panelStyles, theme)} hidden={this.props.dark && false}>
+                        <Button className={cx( GlobalStyles.negativeButton )} onClick={() => { this.stopTimer(); this.props.endSession(); }}>
+                            End Session
+                        </Button>
                     </div>
                 </div>
             </>
