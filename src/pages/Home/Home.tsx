@@ -128,6 +128,7 @@ export default class Home extends React.Component<Props, State> {
                             book={book} 
                             dark={this.state.dark}
                             userIsAuthenticated={this.state.userIsAuthenticated}
+                            userId={this.state.user ? this.state.user.id : ""}
                         />
                     ))
                 }

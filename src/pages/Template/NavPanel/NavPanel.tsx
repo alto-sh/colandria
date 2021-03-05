@@ -18,6 +18,7 @@ export default class NavPanel extends React.Component<Props, State> {
             <>
                 &nbsp;&nbsp;&nbsp;
                 <NavBtn to="/" page={Page.HOME} currentPage={this.props.currentPage} dark={this.props.dark}>Home</NavBtn>
+                <NavBtn to="/library" page={Page.LIBRARY} currentPage={this.props.currentPage} dark={this.props.dark}>My Library</NavBtn>
                 <NavBtn to="/journal" page={Page.JOURNAL} currentPage={this.props.currentPage} dark={this.props.dark}>Journal</NavBtn>
                 <NavBtn to="/palace" page={Page.FOCUSED_READING} currentPage={this.props.currentPage} dark={this.props.dark}>Mind Palace</NavBtn>
             </>

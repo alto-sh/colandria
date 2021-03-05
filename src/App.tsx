@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Page Imports
 import Home from "./pages/Home/Home";
+import Library from "./pages/Library/Library";
 import Journal from "./pages/Journal/Journal";
 import MindPalace from "./pages/MindPalace/MindPalace";
 
@@ -21,6 +22,7 @@ export default class App extends React.Component<Props, State> {
                 <Switch>
                     {/* Paths */}
                     <Route path="/"             component={ Home }          exact/>
+                    <Route path="/library"      component={ Library }       exact/>
                     <Route path="/journal"      component={ Journal }       exact/>
                     <Route path="/palace"       component={ MindPalace }    exact/>
                 </Switch>

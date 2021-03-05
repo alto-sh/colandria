@@ -49,6 +49,10 @@ export default class MindPalace extends React.Component<Props, State> {
         $("#palace").hide();
     }
 
+    componentWillUnmount() {
+        this.audio.pause();
+    }
+
     updateCategory(music: Music) {
         this.setState({ music: music }, () => {
             let src: string = "";

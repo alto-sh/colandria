@@ -19,6 +19,37 @@ const Styles = {
             text-decoration:none;
         }
     `,
+    genericPanel: css`
+        border-radius: 1.25rem;
+        padding: 30px;
+        text-align: center;
+
+        &, & h1 { 
+            font-weight: bold; 
+            transition: all .25s;
+        }
+        
+        & h1 { 
+            margin: 30px; 
+            font-size: 34pt; 
+            margin-bottom: 10px; 
+        }
+        
+        & p { 
+            margin-bottom: 30px; 
+            color: #666; 
+            font-size: 14pt; 
+            font-weight: normal;
+            font-family: 'Poppins', sans-serif !important;
+        }
+    `,
+    genericPanelDark: css`
+        background: rgba(255, 255, 255, 0.1);
+        & h1 { color: white }
+    `,
+    genericPanelLight: css`
+        background: whitesmoke;
+    `,
     coloredButton: css`
         text-align: center;
         border-radius: 1rem;
