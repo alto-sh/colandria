@@ -171,6 +171,39 @@ const Styles = {
             transform: scale(1.02);
             color: black !important;
         }
+    `,
+    glassButton: css`
+        text-align: center;
+        border-radius: 1rem;
+        width: 100%;
+        padding: 17px;
+        font-size: 20pt;
+        font-family: 'Poppins', sans-serif;
+        transition: all .25s;
+
+        /* Colors */
+        &, &:hover, &:active {
+            border: 0;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+    `,
+    glassButtonDark: css`
+        &, &:hover, &:active {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: white;
+        }
+    `,  
+    glassButtonLight: css`
+        &, &:hover, &:active {
+            background: whitesmoke !important;
+            color: black !important;
+        }
     `
 }
 
