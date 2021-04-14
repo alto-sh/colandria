@@ -49,7 +49,7 @@
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "typescript": "^3.9.5",
     "webfontloader": "^1.6.28",
-    "webpack": "^4.43.0",
+    "webpack": "^4.46.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   }
